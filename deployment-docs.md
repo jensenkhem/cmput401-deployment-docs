@@ -46,7 +46,7 @@ TODO
 TODO
 
 ## Deployment Configuration
-Once the `docker` and `docker compose` commands are available for use on your deployment host, we can begin to configure the application for deployment. 
+With the prerequisites out of the way, we can begin to configure the application for deployment. 
 
 Since this is a full-stack web application, there are four notable components of the application which have their own configuration values.
 - NodeJS (Backend)
@@ -56,7 +56,7 @@ Since this is a full-stack web application, there are four notable components of
 
 Luckily, this application is entirely configurable via a set of expected environment variables, and therefore the configuration for these components is consolidated. 
 
-Additionally, there are a few required Docker configuration options that will be explained below.
+Additionally, there are a few required Docker configuration options that will be explained at the end.
  
 The following section will go over each component's configuration separately, although you may notice that the configuration files are shared between components. This is no issue, as each of the below sections will only cover the set of environment variables required by that specific component.
 
