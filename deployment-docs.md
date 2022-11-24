@@ -34,16 +34,17 @@ nginx version: nginx/1.17.0
 If running the above command does not result in output similar to above (the version may be newer), then NGINX may not have been installed correctly.
 
 ### Register a Google Cloud OAuth 2.0 Application
-TODO
+Follow the 'Prerequisites' section of the [following guide](https://developers.google.com/identity/protocols/oauth2/javascript-implicit-flow), ensuring that the URLs that you choose here match that of your desired deployment URL, and that you save the secret key, and client ID in a secure location for later use.
 
 ### Register a Github Oath 2.0 Application
-TODO
+Follow [this guide](https://docs.github.com/en/developers/apps/building-oauth-apps/creating-an-oauth-app), again ensuring that the URLs chosen here match that of your desired deployment URL, and that you save the secret key, and client ID in a secure location for later use.
 
 ### Configure Stripe Application and Product
-TODO
+- [Create a Stripe account](https://dashboard.stripe.com/register) 
+- [Create a monthly subscription 'product'](https://stripe.com/docs/billing/subscriptions/build-subscriptions?ui=checkout#create-pricing-model), making sure to save the corresponsing 'Price ID'.
 
 ### Clone the Repository
-TODO
+Clone out this repository on the deployment host in a location which you have permission.
 
 ## Deployment Configuration
 With the prerequisites out of the way, we can begin to configure the application for deployment. 
@@ -54,7 +55,7 @@ Since this is a full-stack web application, there are four notable components of
 - PostgreSQL (Database)
 - NGINX (Web hosting)
 
-Luckily, this application is entirely configurable via a set of expected environment variables, and therefore the configuration for these components is consolidated. 
+Luckily, other than NGINX, this application is entirely configurable via a set of predefined environment variables, and therefore the configuration for these components is consolidated. 
 
 Additionally, there are a few required Docker configuration options that will be explained at the end.
  
@@ -87,5 +88,47 @@ FRONTEND_URL=http://localhost:8080
 ADMIN_EMAIL=
 ADMIN_PASSWORD=
 
+### Authentication Variables ###
+## Google
+# Variables associated with Google OAuth 2.0. 
+# These values can be found on your google API dashboard 
+# if you have registered the application correctly. 
+# Again, ensure that the CLINET_ID and CLIENT_SECRET values are not # shared with anyone outside of this file.
+GOOGLE_CLIENT_SECRET=
+GOOGLE_CLIENT_ID=
+GOOGLE_CALLBACK_URL=
 
+## Github
+# Variables associated with Github OAuth 2.0. 
+# These values can be found under your Github Developer Settings 
+# if you have registered the application correctly. 
+# Again, ensure that the CLINET_ID and CLIENT_SECRET values are not # shared with anyone outside of this file.
+GITHUB_CLIENT_SECRET=
+GITHUB_CLIENT_ID=
+GITHUB_CALLBACK_URL=
+
+## Session Variables
+# This variable is required to compute the hash for all 
+# browser sessions created by the application.
+# Ensure that this value is sufficiently long and random, and is not
+# shared with anyone.
+SESSION_SECRET=
+
+### Stripe Variables ###
+# Stripe Secret key 
+# This the is the secret key associated with your Stripe account
+# and application. It can be found on your Stripe dashboard
+# and should not be shared with anyone.
+STRIPE_SECRET_KEY=
+
+# This the is the publishable key associated with your Stripe 
+# account and application. It can be found on your Stripe dashboard
+# and will be used on the front-end.
+STRIPE_PUBLISHABLE_KEY=
+
+# The Price ID of the subscription we created in the prerequisites
+# section.
+STRIPE_SUBSCRIPTION_ID=
 ```
+
+## Frontend Configuration
