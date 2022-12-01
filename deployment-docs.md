@@ -132,13 +132,17 @@ STRIPE_SUBSCRIPTION_ID=
 ```
 
 ### Frontend Configuration
-All of the configuration variables associated with the frontend should be configured under the cloned repository's `frontend/.env` file. This information **will** be commited to the repository, and viewable by users. Therefore, make sure none of these configuration values contain sensitive information. 
+The following configuration variables associated with the frontend should be configured under the cloned repository's `frontend/.env` file. This information **will** be commited to the repository, and viewable by users. Therefore, make sure none of these configuration values contain sensitive information. 
 ```
 # The Frontend equivalent of the backend's BACKEND_URL and 
 # FRONTEND_URL variables. These values should be consistent
 # with the ones configured in the other file.
 REACT_APP_BACKEND_URL=http://localhost:3000
 REACT_APP_FRONTEND_URL=http://localhost:8080
+```
+Finally, you also need to make sure that these same URLs are configured under the `allowedHosts` list in `frontend/webpack.confiog.js` as such:
+```
+allowedHosts: ['localhost:3000', 'localhost:8080'],
 ```
 
 ### Databse Configuration
