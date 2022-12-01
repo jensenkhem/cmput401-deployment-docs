@@ -145,7 +145,7 @@ Finally, you also need to make sure that these same URLs are configured under th
 allowedHosts: ['localhost:3000', 'localhost:8080'],
 ```
 
-### Databse Configuration
+### Database Configuration
 The following configuration values are related to the deployment of, and connection to the PostgreSQL database that is required by the application. All configuration for this component should be configured under the cloned repository's `deployment/.env` file.
 ```
 # Name of the postgres database to create/connect to
